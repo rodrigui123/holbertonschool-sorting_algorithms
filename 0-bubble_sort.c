@@ -9,25 +9,25 @@
 
 void bubble_sort(int *array, size_t size)
 {
-	size_t i = 0, j = 0, size_aux = size - 1;
+	size_t i = 0, j = 0, size_aux = size;
 	int aux = 0;
 
-	if (size < 2) /* caso borde */
+	if (size < 2)
 		return;
-	while (size_aux) /* mientras haya algo en la lista */
+	while (size_aux)
 	{
-		for (i = 0; i <= size_aux; i++) /* recorro la lista chequeando */
+		for (i = 0; i <= size_aux; i++)
 		{
 			j = i;
-			if ((array[j] > array[j + 1]) && (j + 1) < size_aux)
-			/* entra en este if, si el aux es menor a i/j */
+			if ((array[i] > array[j + 1]) && (j + 1) < size_aux)
 			{
 				aux = array[i];
 				array[i] = array[j + 1];
 				array[j + 1] = aux;
 				print_array(array, size);
+				j++;
 			}
 		}
-		size_aux--; /* achico la lista cada vez que el mayor queda */
+		size_aux--;
 	}
 }
