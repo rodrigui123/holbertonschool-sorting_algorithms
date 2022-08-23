@@ -9,11 +9,12 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t sizeaux = 0;
-	int min = array[0];
+	int min = 0;
 	unsigned long int i = 0, j = 0;
 
 	if (size < 2 || array[0] == '\0')
 		return;
+	min = array[0];
 	while (sizeaux < size)
 	{
 		j = sizeaux;
