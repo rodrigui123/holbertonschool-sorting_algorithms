@@ -22,7 +22,7 @@ void bubble_sort(int *array, size_t size)
 			if ((array[j] > array[j + 1]) && (j + 1) < size_aux)
 			/* entra en este if, si el aux es menor a i/j */
 			{
-				aux = arrayj[j];
+				aux = array[j];
 				array[i] = array[j + 1];
 				array[j + 1] = aux;
 				print_array(array, size);
