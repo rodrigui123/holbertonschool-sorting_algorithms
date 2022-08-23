@@ -27,8 +27,8 @@ void selection_sort(int *array, size_t size)
 			min = array[j]; /* guardo el minimo en min */
 			array[j] = array[sizeaux]; /* le doy el valor de sizeaux a J */
 			array[sizeaux] = min; /* coloco el valor del min en sizeaux */
+			print_array(array, size);
 		}
-		print_array(array, size);
 		sizeaux++; /* achico la lista a medida que seteo valor */
 		min = array[sizeaux]; /* valor de min en posc de sizeaux */
 	}
