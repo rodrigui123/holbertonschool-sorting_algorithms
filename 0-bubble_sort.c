@@ -26,7 +26,6 @@ void bubble_sort(int *array, size_t size)
 				array[i] = array[j + 1];
 				array[j + 1] = aux;
 				print_array(array, size);
-				j++;
 			}
 		}
 		size_aux--; /* achico la lista cada vez que el mayor queda */
