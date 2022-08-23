@@ -16,7 +16,7 @@ void bubble_sort(int *array, size_t size)
 		return;
 	while (size_aux) /* mientras haya algo en la lista */
 	{
-		for (i = 0; i < size_aux; i++) /* recorro la lista chequeando */
+		for (i = 0; i <= size_aux; i++) /* recorro la lista chequeando */
 		{
 			j = i;
 			if ((array[j] > array[j + 1]) && (j + 1) < size_aux)
