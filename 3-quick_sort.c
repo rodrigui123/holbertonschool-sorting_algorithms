@@ -1,5 +1,28 @@
 #include "sort.h"
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+/**
+ * print_array - Prints an array of integers
+ *
+ * @array: The array to be printed
+ * @size: Number of elements in @array
+ */
+void print_array(const int *array, size_t size)
+{
+    size_t i;
+
+    i = 0;
+    while (array && i < size)
+    {
+        if (i > 0)
+            printf(", ");
+        printf("%d", array[i]);
+        ++i;
+    }
+    printf("\n");
+}
 
 /**
  * main - Entry point
@@ -18,13 +41,27 @@ size_t quick_sort_aux(int *array, size_t size, size_t low, size_t sup)
 	pivot = array[sup];
 	for (j = low; j < sup; j++)
 	{
-		if (array[j] > pivot) /*si encuentra alguno menor que el pivot*/
+		if (array[j] > pivot && highest_value_index == -1) /*si encuentra alguno menor que el pivot*/
 		{
+			highest_value_index = j;
 			i++;
-			aux = array[i];
-			array[i] = array[j];
-			array[j] = aux;
 		}
+		if (array[j] < pivot && highest_value_index != -1)
+		{
+			aux = array[highest_value_index];
+			array[highest_value_index] = array[j];
+			array[j] = aux;
+			highest_value_index = -1;
+			print_array(array, size);
+		}
+	}
+	if (highest_value_index)
+	{
+		aux = array[highest_value_index];
+		array[i] = array[sup];
+		array[sup] = aux;
+		highest_value_index = -1;
+		print_array(array, size);
 	}
 }
 
