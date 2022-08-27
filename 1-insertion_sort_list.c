@@ -43,13 +43,12 @@ void swap_nodes(listint_t *node_1, listint_t *node_2)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *aux_1 = *list, *move = *list, *next_to_move = *list;
+	listint_t *aux_1 = NULL, *move = NULL, *next_to_move = NULL;
 
-	if (!*list)
+	if (!list)
 		return;
-	if (move->next)
-		move = move->next;
-	else
+	aux_1 = *list, move = *list, next_to_move = *list;
+	if (!move->next) /*if exists ohter node*/
 		return;
 
 	 /*puntero parcial*/
@@ -69,12 +68,18 @@ void insertion_sort_list(listint_t **list)
 				else
 					break;
 			}
-			move = next_to_move->next;
-			if (!move)
+			if (next_to_move->next)
+				move = next_to_move->next;
+			else
 				return;
 		}
 		else /*salteo si es menor*/
-			move = move->next;
+		{
+			if (move->next)
+				move = move->next;
+			else
+				return;
+		}
 		aux_1 = move->prev;
 	}
 }
