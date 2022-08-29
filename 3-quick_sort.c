@@ -4,27 +4,6 @@
 #include <stdio.h>
 
 /**
- * print_array - Prints an array of integers
- *
- * @array: The array to be printed
- * @size: Number of elements in @array
- */
-void print_array(const int *array, size_t size)
-{
-    size_t i;
-
-    i = 0;
-    while (array && i < size)
-    {
-        if (i > 0)
-            printf(", ");
-        printf("%d", array[i]);
-        ++i;
-    }
-    printf("\n");
-}
-
-/**
  * main - Entry point
  *
  * Return: Always 0
@@ -51,24 +30,37 @@ size_t quick_sort_aux(int *array, size_t size, size_t low, size_t sup)
 			aux = array[highest_value_index];
 			array[highest_value_index] = array[j];
 			array[j] = aux;
+			j = highest_value_index;
 			highest_value_index = -1;
 			print_array(array, size);
 		}
 	}
-	if (highest_value_index)
+	if (highest_value_index > -1)
 	{
 		aux = array[highest_value_index];
-		array[i] = array[sup];
+		array[highest_value_index] = array[sup];
 		array[sup] = aux;
-		highest_value_index = -1;
 		print_array(array, size);
-	}
-}
 
+		if ((int)sup > highest_value_index +1)
+		{
+			quick_sort_aux(array, size, highest_value_index +1, sup);
+		}
+		if ((int)low < highest_value_index -1)
+		{
+			quick_sort_aux(array, size, low, highest_value_index -1);
+		}
+	}
+	if (highest_value_index == -1 && (sup -1) != low)
+	{
+		quick_sort_aux(array, size, low, sup -1);
+	}
+	return (0);
+}
 void quick_sort(int *array, size_t size)
 {
-	size_t low = 0, sup = size - 1;
+	size_t sup = size - 1;
 
-	low = quick_sort_aux(array, size, 0, sup);
+	quick_sort_aux(array, size, 0, sup);
 
 }
