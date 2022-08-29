@@ -4,8 +4,11 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- *
+ * quick_sort_aux - sorts an array of integers using the Quick sort
+ * @array: the list
+ * @size: size of the list
+ * @low: lower number
+ * @sup: superior number
  * Return: Always 0
  */
 
@@ -20,7 +23,8 @@ size_t quick_sort_aux(int *array, size_t size, size_t low, size_t sup)
 	pivot = array[sup];
 	for (j = low; j < sup; j++)
 	{
-		if (array[j] > pivot && highest_value_index == -1) /*si encuentra alguno menor que el pivot*/
+		if (array[j] > pivot && highest_value_index == -1) 
+		/*si encuentra alguno menor que el pivot*/
 		{
 			highest_value_index = j;
 			i++;
@@ -41,19 +45,18 @@ size_t quick_sort_aux(int *array, size_t size, size_t low, size_t sup)
 		array[highest_value_index] = array[sup];
 		array[sup] = aux;
 		print_array(array, size);
-
-		if ((int)sup > highest_value_index +1)
+		if ((int)sup > highest_value_index + 1)
 		{
-			quick_sort_aux(array, size, highest_value_index +1, sup);
+			quick_sort_aux(array, size, highest_value_index + 1, sup);
 		}
-		if ((int)low < highest_value_index -1)
+		if ((int)low < highest_value_index - 1)
 		{
-			quick_sort_aux(array, size, low, highest_value_index -1);
+			quick_sort_aux(array, size, low, highest_value_index - 1);
 		}
 	}
-	if (highest_value_index == -1 && (sup -1) != low)
+	if (highest_value_index == - 1 && (sup - 1) != low)
 	{
-		quick_sort_aux(array, size, low, sup -1);
+		quick_sort_aux(array, size, low, sup - 1);
 	}
 	return (0);
 }
