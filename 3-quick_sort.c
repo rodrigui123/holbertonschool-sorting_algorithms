@@ -62,6 +62,8 @@ size_t quick_sort_aux(int *array, size_t size, size_t low, size_t sup)
 }
 /**
  * quick_sort - same as quick sort aux
+ * @size: size of list
+ * @array: the list
 */
 void quick_sort(int *array, size_t size)
 {
