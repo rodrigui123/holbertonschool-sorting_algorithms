@@ -60,6 +60,9 @@ size_t quick_sort_aux(int *array, size_t size, size_t low, size_t sup)
 	}
 	return (0);
 }
+/**
+ * quick_sort - same as quick sort aux
+*/
 void quick_sort(int *array, size_t size)
 {
 	size_t sup = size - 1;
