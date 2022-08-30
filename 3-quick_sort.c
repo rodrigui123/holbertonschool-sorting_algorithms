@@ -46,18 +46,12 @@ size_t quick_sort_aux(int *array, size_t size, size_t low, size_t sup)
 		array[sup] = aux;
 		print_array(array, size);
 		if ((int)sup > highest_value_index + 1)
-		{
 			quick_sort_aux(array, size, highest_value_index + 1, sup);
-		}
 		if ((int)low < highest_value_index - 1)
-		{
 			quick_sort_aux(array, size, low, highest_value_index - 1);
-		}
 	}
 	if (highest_value_index == - 1 && (sup - 1) != low)
-	{
 		quick_sort_aux(array, size, low, sup - 1);
-	}
 	return (0);
 }
 /**
